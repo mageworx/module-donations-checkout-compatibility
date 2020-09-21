@@ -1,0 +1,25 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<div class="form__field mageworx_roudup">
+    <div class="checkbox">
+        <input class="checkbox__control"
+               type="checkbox"
+               ko-checked="$data.checked"
+               disable="disabled"
+               ko-value="value"
+               hasFocus="focused"
+               attr="id: uid, name: inputName">
+        <label class="checkbox__label" attr="for: uid">
+            <div class="checkbox__box">
+                <svg class="icon checkbox__icon">
+                    <use xlink:href="#icon--check"></use>
+                </svg>
+            </div>
+            <span html="description || label "></span>
+        </label>
+    </div>
+</div>
