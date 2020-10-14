@@ -1,0 +1,22 @@
+{
+  "name": "mageworx/module-donations-checkout-compatibility",
+  "description": "Compatibility extension for MageWorx Donations with MageWorx Checkout",
+  "require": {
+    "mageworx/module-donations": ">=1.5.0",
+    "mageworx/module-checkout": ">=1.0.0"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageWorx\\DonationsCheckout\\": ""
+    }
+  }
+}

@@ -1,0 +1,103 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+
+<!-- ko if: isEnableDonations() -->
+<div class="summary__cell">
+    <dl class="collapsible" id="mageworx-donation-container"
+        data-bind="blockLoader: isLoading, css: {'collapsible--expanded': contentVisible}">
+        <dt class="collapsible__header" data-bind="click: toggleCollapsible">
+        <span class="link link--variation-accent link--variation-strong"
+              data-bind="i18n: 'Donation'"></span>
+        </dt>
+
+        <dd class="collapsible__content">
+            <div class="form form--condensed">
+                <!-- ko foreach: getRegion('messages') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+
+                <form id="mageworx-donation-form" class="form">
+
+                    <!-- ko if: isEnableCartDonation() -->
+                    <div class="form__field">
+                        <div class="div select">
+                            <!-- ko if: isDisplayBlockDefaultDonation() -->
+                            <label class="select__label" data-bind="text: getDefaultDonation()"></label>
+                            <!--/ko-->
+
+                            <div data-bind="visible: showButtonAdd()">
+                                <fieldset class="fieldset">
+                                    <!-- ko foreach: getRegion('mageworx-donation-form-fields') -->
+                                    <!-- ko template: getTemplate() --><!-- /ko -->
+                                    <!--/ko-->
+                                </fieldset>
+                                <!-- ko if: isActivateMinimumDonation() -->
+                                <div class="minimum_donation">
+                                    <span data-bind="i18n: 'Minimum donation'"></span>
+                                    <span data-bind="text: getMinimumDonation()"></span>
+                                </div>
+                                <!-- /ko -->
+                                <div class="form__field">
+                                    <button type="button"
+                                            data-bind="click: onSubmitAdd"
+                                            class="button button--primary">
+                                        <span data-bind="i18n: 'Add Donation'"></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div data-bind="visible: showButtonDelete()">
+                                <div class="form__field">
+                                    <div class="summary">
+                                        <div
+                                            class="summary__field summary__field--style-no-border summary__field--condensed">
+                                            <div class="summary__cell">
+                                                <p class="text text--variation-subdued"></p>
+                                                <span data-bind="i18n: 'Donation'"></span>
+                                                <span data-bind="text: getValueDonation()"></span>
+                                                <span data-bind="i18n: 'was added to your order total'"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form__field">
+                                    <button type="button"
+                                            data-bind="click: onSubmitDelete"
+                                            class="button button--outline">
+                                        <span data-bind="i18n: 'Remove Donation'"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ko-->
+
+                    <div class="form__field">
+                        <div class="checkbox">
+                            <!-- ko foreach: getRegion('mageworx-donation-round-up-fields') -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                            <!--/ko-->
+                            <!-- ko if: isDisplayGiftAid() -->
+                            <div id="gift_aid">
+                                <!-- ko foreach: getRegion('mageworx-donation-gift-aid-fieldset') -->
+                                <!-- ko template: getTemplate() --><!-- /ko -->
+                                <!--/ko-->
+                                <button type="button" data-bind="click: onAddressSave, visible: isSaveAddressVisible()"
+                                        class="action" id="address-save-button">
+                                    <span data-bind="i18n: 'Save Address'">Save Address</span>
+                                </button>
+                            </div>
+                            <!--/ko-->
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </dd>
+    </dl>
+</div>
+<!-- /ko -->
